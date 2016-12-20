@@ -38,6 +38,8 @@ public class UserAccountController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String action=request.getParameter("ACTION");
+		
+		System.out.println(action);
 		if (action.equals("USER.CREATE"))
 		{
 			User user =new User();
@@ -64,7 +66,7 @@ public class UserAccountController extends HttpServlet {
 			}
 			catch (Exception ex)
 			{
-				
+				System.out.println(ex);
 			}
 			
 		}

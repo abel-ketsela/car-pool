@@ -23,8 +23,8 @@ public class UserAccountDAOImpl implements UserAccountDAO  {
 							+ "(?,?,?,?,?,?,?,?,?,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP);";
 		
 		PreparedStatement stmt = con.prepareStatement(query);
-		
-		stmt.setString(1, user.getFullName());
+		System.out.println("test "+user.getFullName());
+		stmt.setString(1, "abel");
 		stmt.setString(2, user.getGender());
 		stmt.setString(3, user.getState());
 		stmt.setString(4, user.getCity());
@@ -36,7 +36,7 @@ public class UserAccountDAOImpl implements UserAccountDAO  {
 		
 				
 	    System.out.println("the query: " + query);
-	    stmt.executeUpdate(query);
+	    stmt.executeUpdate();
 		
 		
 	}

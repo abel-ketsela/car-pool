@@ -9,7 +9,7 @@
     });
       var formData = {
             "fullName": $('#txtFullName').val(),
-            "gender": $('#txtGender').val(),
+            "gender": $('#optGender').val(),
             "state": $('#txtState').val(),
             "city": $('#txtCity').val(),
             "street": $('#txtStreet').val(),
@@ -17,6 +17,7 @@
             "dob": $('#txtDOB').val(),
             "email": $('#txtEmail').val(),
             "password": $('#txtPassword').val(),
+            "zipCode": $('#txtZipCode').val(),            
             "ACTION": "USER.CREATE"
 
 };
@@ -28,20 +29,18 @@
             
             $.ajax({
     
-                type: 'POST', 
-                crossDomain: true,
-                url: '/user/add', 
+                type: 'POST',
+                url: '/car-pool/user/add', 
                 data: formData, // our data object    
-                encode: true
             })
             // using the done promise callback
             .done(function (data) {
-
+            	alert("Succesfull")
                 // log data to the console so we can see
-                for(var i=0; i<data.length; i++){
-                    alert(data[i]);
-                }
-                console.log(data);
+                //for(var i=0; i<data.length; i++){
+                    //alert(data[i]);
+                //}
+                //console.log(data);
 
 
                 // here we will handle errors and validation messages

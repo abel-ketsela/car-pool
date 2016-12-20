@@ -1,5 +1,6 @@
 package edu.mum.wap.carpool.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class User {
@@ -11,14 +12,14 @@ public class User {
 	private String city;
 	private String street;
 	private String zipCode;
-	private String birthYear;
+	private LocalDate  dateOfBirth;
 	private String email;
 	private String password;
-	private Date dateCreated;
-	private Date dateUpdated;
+	private LocalDate  dateCreated;
+	private LocalDate  dateUpdated;
 	
 	
-	//////////////////////SETTER/ GETTER/////////////////////////////
+//////////////////////SETTER/ GETTER/////////////////////////////
 	public int getUserId() {
 		return userId;
 	}
@@ -61,11 +62,11 @@ public class User {
 	public void setZipCode(String zipCode) {
 		this.zipCode = zipCode;
 	}
-	public String getBirthYear() {
-		return birthYear;
+	public LocalDate getDateOfBirth() {
+		return dateOfBirth;
 	}
-	public void setBirthYear(String birthYear) {
-		this.birthYear = birthYear;
+	public void setDateOfBirth(LocalDate dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
 	}
 	public String getEmail() {
 		return email;
@@ -79,18 +80,24 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public Date getDateCreated() {
+	public LocalDate getDateCreated() {
 		return dateCreated;
 	}
-	public void setDateCreated(Date dateCreated) {
+	public void setDateCreated(LocalDate dateCreated) {
 		this.dateCreated = dateCreated;
 	}
-	public Date getDateUpdated() {
+	public LocalDate getDateUpdated() {
 		return dateUpdated;
 	}
-	public void setDateUpdated(Date dateUpdated) {
+	public void setDateUpdated(LocalDate dateUpdated) {
 		this.dateUpdated = dateUpdated;
 	}
+
+
+	
+	
+	
+	
 	
 	
 	

@@ -10,15 +10,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
         <title>CAR Pooling </title>
-        <script
-<<<<<<< HEAD
-        src="https://code.jquery.com/jquery-3.1.1.min.js"></script>		
-        <link href="../resources/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>  
-=======
-        src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
         <link href="/car-pool/resources/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>  
->>>>>>> origin/master
+
         <style type="text/css" >
             #gotop {
                 cursor: pointer;

@@ -8,7 +8,7 @@ $("#loader").hide();
 
 $('#signIn').click(function() {
 //      
-        
+        alert("test");
     
       var formData = {
             "loginId": $('#loginId').val(),          

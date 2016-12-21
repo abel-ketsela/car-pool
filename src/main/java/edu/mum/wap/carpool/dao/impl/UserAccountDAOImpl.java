@@ -55,7 +55,7 @@ Connection con=GlobalUtil.getDBConnection();
 		
 		stmt.setString(1, loginId);
 		
-				
+				System.out.println("email ++"+loginId);
 	    System.out.println("the query: " + query);
 	    ResultSet rsUser=stmt.executeQuery();
 	    if (rsUser.next())

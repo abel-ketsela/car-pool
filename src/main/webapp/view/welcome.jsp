@@ -10,8 +10,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
         <title>Welcome Page</title>
-        <link href="../resources/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>        
-        <script src="../resources/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <link href="/car-pool/resources/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>        
+        <script src="/car-pool/resources/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     </head>
     <body>
         <div class="container-fluid">
@@ -173,7 +173,7 @@
                         </form>
                     </div>
                     <div class="modal-footer">
-
+							<p>${errorMsg}</p>
                         <button type="button" class="btn btn-default" data-dismiss="modal">
                             Close
                         </button> 
@@ -192,12 +192,12 @@
             </div>
             <strong>Copyright © 2016 <a href="">CAR POOLING.</strong> All rights reserved.
         </footer>
-        <script src="../resources/bootstrap/js/jquery.min.js" type="text/javascript"></script>
-        <script src="../resources/bootstrap/js/bootstrap.js" type="text/javascript"></script>
-        <script src="../resources/plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
-        <script src="../resources/js/login.js" type="text/javascript"></script>
-        <script src="../resources/js/signup.js" type="text/javascript"></script>
+        <script src="/car-pool/resources/bootstrap/js/jquery.min.js" type="text/javascript"></script>
+        <script src="/car-pool/resources/bootstrap/js/bootstrap.js" type="text/javascript"></script>
+        <script src="/car-pool/resources/plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
+        <script src="/car-pool/resources/js/login.js" type="text/javascript"></script>
+        <script src="/car-pool/resources/js/signup.js" type="text/javascript"></script>
         
-        <link href="../resources/plugins/datepicker/datepicker3.css" rel="stylesheet" type="text/css"/>
+        <link href="/car-pool/resources/plugins/datepicker/datepicker3.css" rel="stylesheet" type="text/css"/>
     </body>
 </html>

@@ -13,7 +13,7 @@
         <script
         src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
-        <link href="../resources/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>  
+        <link href="/car-pool/resources/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>  
         <style type="text/css" >
             #gotop {
                 cursor: pointer;
@@ -85,8 +85,7 @@
 
                         <div class="col-md-4">
                             <div>                        
-                                <button id="go">Go!</button>
-                                <input id="textId" type="text" value="1" />
+                               
                                 <div class="jumbotron">
                                     <h2>
                                         Weather information on the current area
@@ -101,7 +100,7 @@
                             </div>
                         </div>
                         <div class="col-md-8">
-                            <input type="submit" id="loadPosts" />
+                            
                             <div id="posts">
 
                             </div>
@@ -205,11 +204,12 @@
             <strong>Copyright © 2016 <a href="">CAR POOLING.</strong> All rights reserved.
         </footer>
 
-        <script src="../resources/bootstrap/js/jquery.min.js" type="text/javascript"></script>
-        <script src="../resources/bootstrap/js/bootstrap.js" type="text/javascript"></script>
-        <script src="../resources/js/rideRequest.js" type="text/javascript"></script>
-        <script src="../resources/js/posts.js" type="text/javascript"></script>
-        <script src="../resources/bootstrap/js/jquery.infinitescroll.min.js" type="text/javascript"></script>
+
+        <script src="/car-pool/resources/bootstrap/js/jquery.min.js" type="text/javascript"></script>
+        <script src="/car-pool/resources/bootstrap/js/bootstrap.js" type="text/javascript"></script>
+        <script src="/car-pool/resources/js/rideRequest.js" type="text/javascript"></script>
+        <script src="/car-pool/resources/js/posts.js" type="text/javascript"></script>
+        <script src="/car-pool/resources/bootstrap/js/jquery.infinitescroll.min.js" type="text/javascript"></script>
         <script type="text/javascript">
             $('a#gotop').click(function () {
                 $("html").animate({scrollTop: 0}, "slow");

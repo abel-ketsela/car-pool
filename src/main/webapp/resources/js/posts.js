@@ -14,7 +14,7 @@ $(document).ready(function () {
 
 function loadAjax(){
     
-    $.ajax("http://jsonplaceholder.typicode.com/comments?"
+    $.ajax("http://localhost:8080/car-pool/post/get?ACTION=POST.GET.REQUEST"
             , {
                 "type": "GET",
             }).done(loadRidePosts)
@@ -31,7 +31,7 @@ function loadRidePosts(data) {
 //        alert("No update")
 //    }
 
-    for (var i = data.length -1 ; i > 0  ; i--) {
+    for (let i=0 ; i < data.length  ; i++) {
         var mediaDiv = $('<div>').addClass("media well")
 
         var img = $('<a>').addClass("pull-left").append(
@@ -40,11 +40,11 @@ function loadRidePosts(data) {
                 .addClass("media-object")
                 )
         var mediaDivBody = $('<div>').addClass("media-body")
-        var mediaHeading = $('<h4>').addClass("media-heading").text(data[i].name)
-        var mediaEmail = $('<p>').text(data[i].email)
-        var mediaContent = $('<p>').text(data[i].body)
+        var mediaHeading = $('<h4>').addClass("media-heading").text(data[i].user.fullName)
+        var mediaEmail = $('<p>').text(data[i].user.email)
+        var mediaContent = $('<p>').text(data[i].post)
         var mediaComments = $('<button>').addClass("btn btn-primary")
-                .text("Comments Sample" + i).attr("data-id", i)
+                .text("Comments" ).attr("data-id", data[i].postId)
                 .on('click', loadComments)
 
 
@@ -77,6 +77,8 @@ function loadRidePosts(data) {
       
              
         for (var i = 0; i < data.length; i++) {
+        	
+
             var postId = data[i].postId;
             var id = data[i].id;
             var name = data[i].name;

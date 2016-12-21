@@ -66,19 +66,22 @@ public class UserAccountController extends HttpServlet {
 		}
 		else if (action.equals("USER.LOGIN"))
 		{
-			User user=this.userAccountService.validateUser(request.getParameter("loginId"),request.getParameter("password"));
 			System.out.println(request.getParameter("loginId")+"/"+request.getParameter("password"));
+			User user=this.userAccountService.validateUser(request.getParameter("loginId"),request.getParameter("password"));
+			
 			if (user!=null)
 			{
+				//System.out.println("Test"+user.getPassword());
 				request.getSession().setMaxInactiveInterval(30*60);
 				request.getSession().setAttribute("currentUser", user);
-				request.getRequestDispatcher("/car-pool/view/index.jsp")
-											.forward(request, response);
+				request.getRequestDispatcher("/view/index.jsp")
+				.forward(request, response);
+				
 			}
 			else
 			{
-				request.setAttribute("errorMsg", "Invalid Login or Password");
-				request.getRequestDispatcher("/car-pool/view/welcome.jsp")
+				request.setAttribute("errorMsg", "Invalid Login or Password, PLease try again");
+				request.getRequestDispatcher("/view/welcome.jsp")
 											.forward(request, response);
 			}
 		}

@@ -10,6 +10,7 @@ import java.util.List;
 
 import edu.mum.wap.carpool.dao.PostDAO;
 import edu.mum.wap.carpool.dao.UserAccountDAO;
+import edu.mum.wap.carpool.model.Comment;
 import edu.mum.wap.carpool.model.Post;
 import edu.mum.wap.carpool.util.GlobalUtil;
 
@@ -62,7 +63,7 @@ public class PostDAOImpl implements PostDAO {
 		
 		List<Post> postList=new ArrayList();
 		
-		String query="SELECT * FROM `car-pool`.`posts` WHERE `posttype` =?";
+		String query="SELECT * FROM `car-pool`.`posts` WHERE `posttype` =? ORDER BY `dateupdated` DESC;";
 					
 		
 		PreparedStatement stmt = con.prepareStatement(query);
@@ -95,6 +96,61 @@ public class PostDAOImpl implements PostDAO {
 	@Override
 	public void deletePost(Post post) throws Exception {
 		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public List<Comment> retrivePostCommentsByPost(int postId) throws Exception {
+
+
+		Connection con=GlobalUtil.getDBConnection();
+		
+		List<Comment> commentList=new ArrayList();
+		
+		String query="SELECT * FROM `car-pool`.`Comments` WHERE `postid` =? ORDER BY `dateupdated` DESC ;";
+					
+		
+		PreparedStatement stmt = con.prepareStatement(query);
+		
+		stmt.setInt(1, postId);
+		
+		ResultSet rsComment=stmt.executeQuery();
+		while(rsComment.next())
+		{
+			Comment comment=new Comment();
+			comment.setCommentid(rsComment.getInt("commentid"));
+			comment.setComment(rsComment.getString("comment"));	
+			comment.setUser(userAccountDAO.retriveUserById(rsComment.getInt("userid")));
+			comment.setDateCreated(rsComment.getDate("datecreated"));
+			comment.setDateUpdated(rsComment.getDate("dateupdated"));
+			
+			commentList.add(comment);
+			
+		}
+		return commentList;
+		
+		
+	}
+	@Override
+	public void createPostComment(Comment comment) throws Exception {
+
+Connection con=GlobalUtil.getDBConnection();
+		
+		String query="INSERT INTO `car-pool`.`comments`"
+				+ "(`userid`,`postid`,`comment`,`datecreated`,`dateupdated`)"
+				+ "VALUES(?,?,?, CURRENT_TIMESTAMP,CURRENT_TIMESTAMP);";
+		
+		PreparedStatement stmt = con.prepareStatement(query);
+		
+		stmt.setInt(1, comment.getUser().getUserId());
+		stmt.setInt(2, comment.getPost().getPostId());
+		stmt.setString(3, comment.getComment());
+		
+		
+		
+				
+	    System.out.println("the query: " + query);
+	    stmt.executeUpdate();
+	    con.close();
 		
 	}
 

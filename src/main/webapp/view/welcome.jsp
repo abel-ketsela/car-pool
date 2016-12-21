@@ -27,7 +27,9 @@
                         </p>
                         <p>
                             <a id="modal-716219" href="#modal-container-716219" role="button" class="btn btn-primary btn" data-toggle="modal">Sign Up</a>
-                            <a id="modal-716219" href="#login" role="button" class="btn btn-primary" data-toggle="modal">login</a>    </p>
+                            <a id="modal-716219" href="#login" role="button" class="btn btn-primary" data-toggle="modal">login</a>    
+                        </p>
+                        <p><% if(request.getAttribute("errorMsg")!=null){out.println(request.getAttribute("errorMsg"));} %></p>
                     </div>
                 </div>
             </div>
@@ -130,24 +132,26 @@
                             Login
                         </h4>
                     </div>
+                     <form action="/car-pool/user/validate" method="POST" class="form-horizontal" role="form">
                     <div class="modal-body">
-                        <form class="form-horizontal" role="form">
+                       
                             <div class="form-group">                               
                                
-                                <label for="inputEmail3" class="col-sm-2 control-label">
+                                <label for="loginId" class="col-sm-2 control-label">
                                     Email
                                 </label>
                                 <div class="col-sm-10">
-                                    <input type="text" id="loginId" class="form-control" id="inputEmail3" />
+                                    <input type="text" name="loginId" class="form-control"  />
+                                     <input type="hidden" name="ACTION" class="form-control"  value="USER.LOGIN" />
                                 </div>
                             </div>
                             <div class="form-group">
 
-                                <label for="inputPassword3" class="col-sm-2 control-label">
+                                <label for="password" class="col-sm-2 control-label">
                                     Password
                                 </label>
                                 <div class="col-sm-10">
-                                    <input type="password" id="password" class="form-control" id="inputPassword3" />
+                                    <input type="password" name="password" class="form-control" />
                                 </div>
                             </div>
                             <div class="form-group">
@@ -160,7 +164,7 @@
                                        
                                     </div>
                                         <div id="loader">
-                                            <img src="../resources/images/loading.gif" alt=""/>
+                                            <img src="/car-pool/resources/images/loading.gif" alt=""/>
                                         </div>
                                 </div>
                             </div>
@@ -170,17 +174,19 @@
 
                                 </div>
                             </div>
-                        </form>
+                        
                     </div>
                     <div class="modal-footer">
-							<p>${errorMsg}</p>
+							
                         <button type="button" class="btn btn-default" data-dismiss="modal">
                             Close
                         </button> 
-                        <button type="button" id="signIn" class="btn btn-primary">
+                        <button type="submit" id="signIn" class="btn btn-primary">
                             Signin
                         </button>
+                        
                     </div>
+                    </form>
                 </div>
 
             </div>

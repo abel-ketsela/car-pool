@@ -55,12 +55,12 @@ Connection con=GlobalUtil.getDBConnection();
 		
 		stmt.setString(1, loginId);
 		
-				System.out.println("email ++"+loginId);
+				
 	    System.out.println("the query: " + query);
 	    ResultSet rsUser=stmt.executeQuery();
 	    if (rsUser.next())
 	    {
-	    	
+	    	System.out.println(rsUser.getString("password"));
 	    	user=new User();
 	    	user.setCity(rsUser.getString("city"));
 	    	user.setDateCreated(rsUser.getDate("datecreated").toLocalDate());

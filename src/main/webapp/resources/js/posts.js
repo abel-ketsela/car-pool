@@ -30,7 +30,8 @@ function loadRidePosts(data) {
 //    }else{
 //        alert("No update")
 //    }
-
+$("#requestRideTab").children("div").remove();
+	
     for (let i=0 ; i < data.length  ; i++) {
         var mediaDiv = $('<div>').addClass("media well")
 
@@ -59,31 +60,52 @@ function loadRidePosts(data) {
        // alert(postSize)
     }
 
-
+var currPost;
     function loadComments() {
-        $.ajax("http://jsonplaceholder.typicode.com/comments"
+    	currPost=$(this).attr("data-id");
+        $.ajax("http://localhost:8080/car-pool/post/getComments"
                 , {
                     "type": "GET",
                     "data": {
-                        "postId": $(this).attr("data-id")
+                        "postId": $(this).attr("data-id"),
+                        "ACTION": "POST.GET.COMMENTS"
 
                     },
                 }).done(getComments)
 
     }
+    
+    function addComment() {
+    	
+    	$("#media #well #posts").remove();
+    	
+        $.ajax("http://localhost:8080/car-pool/post/addComment"
+                , {
+                    "type": "GET",
+                    "data": {
+                        "postId": $(this).attr("data-id"),
+                        "comment": $(this).siblings("textarea").val(),
+                        "ACTION": "POST.ADD.COMMENTS"
+
+                    },
+                }).done(getComments)
+                
+                 $(this).siblings("textarea").val("")
+    }
+
 
     function getComments(data) {
 
       
-             
+    	
         for (var i = 0; i < data.length; i++) {
         	
 
             var postId = data[i].postId;
-            var id = data[i].id;
-            var name = data[i].name;
-            var email = data[i].email;
-            var body = data[i].body;
+            var id = data[i].commentId;
+            var name = data[i].user.fullName;
+            var email = data[i].user.email;
+            var body = data[i].comment;
             var postArray = [postId, id, name, email, body];
             
             var commentsMediaDiv = $('<div>').addClass("media well posts").css("margin-left", "50px")
@@ -93,35 +115,39 @@ function loadRidePosts(data) {
                     .addClass("media-object")
                     )
             var commentsMediaDivBody = $('<div>').addClass("media-body")
-            var commentsMediaHeading = $('<h4>').addClass("media-heading").text("Title" + i)
-            var commentsMediaEmail = $('<p>').text("Email Sample" + i)
-            var commentsMediaContent = $('<p>').text("Content Sample" + i)
-            var loadMoreComments = $('<a>').text("Comments Sample" + i)
+            
+            var commentsMediaHeading = $('<h4>').addClass("media-heading").text(data[i].user.fullName)
+            var commentsMediaEmail = $('<p>').text(data[i].user.email)
+            var commentsMediaContent = $('<p>').text(data[i].comment)
+           
 
                  
             commentDiv = commentsMediaDiv.append(img).append(commentsMediaDivBody)
-                    .append(commentsMediaHeading).append(commentsMediaEmail).append(commentsMediaContent).append(loadMoreComments).insertAfter("[data-id='" + postId + "']")
+                    			.append(commentsMediaHeading)
+                    			.append(commentsMediaEmail)
+                    			.append(commentsMediaContent)
+                    			.insertAfter("[data-id='" + postId + "']")
             
            
         }
         
         commentBlankDiv = $('<div>').addClass("media well posts").css("margin-left", "50px").append(
-                   $('<form>').addClass("form-horizontal")
-                    .attr("role", "form").append($('<div>').addClass("form-group").append(
                                $('<div>').addClass("col-sm-10")
-                                .append($('<input>').attr("type", "textarea")
+                                .append($('<textarea>').attr("type", "textarea")
                                                     .attr("data-id", $(this).attr("data-id"))
-                                                    .addClass("form-control"))
-                                )).append($('<div>').addClass("form-group").append(
-                                $('<div>').addClass("col-sm-10")
-                                .append($('<button>').attr("value", "Comment")
-                                                    .attr("data-id", 1)
-                                                   .addClass("form-control"))
-                               ))
-                  )
+                                                    .attr("rows","3")
+                                                    .attr("cols","100")
+                                                    .attr("placeholder","Write a comment")
+                                                    .addClass("form-control")
+                                         )
+                               .append($('<button>').click(addComment)
+                               .addClass("btn btn-primary")
+                               .text("Leave Comment" ).attr("data-id", currPost)));
+                              
+                  
                  
 
-             commentBlankDiv.insertAfter("[data-id='" + postId + "']")
+             $("[data-id='" + postId + "']").parent().append(commentBlankDiv);
           
     }
 
@@ -138,20 +164,20 @@ function loadRidePosts(data) {
         }
     })
 }
-$('#newPost').on('click', function () {
+
+$('#newPostButton').on('click', function () {
+	
     var postData = {
-        "post": $('#postBody').text(),
-        "postType": $('#postType').val(),
+        "rideText": $('#postBody').val(),
+        "rideType": $('input[name=postType]').val(),
         "ACTION": "POST.CREATE"};
-    console.log(formData);
+    console.log(postData);
     $.ajax({
         type: 'POST',
         url: '/car-pool/post/newPost',
         data: postData,
     })
-            .done(function (data) {
-                alert("Succesfull")
-            });
+            .done(loadAjax);
 
 })
 

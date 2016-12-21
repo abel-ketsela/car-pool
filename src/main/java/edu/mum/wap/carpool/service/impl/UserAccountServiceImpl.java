@@ -28,7 +28,24 @@ public class UserAccountServiceImpl implements UserAccountService {
 	@Override
 	public User validateUser(String loginId, String password) throws Exception {
 		
-		return userAccountDAO.retriveUser(loginId);
+		User user=userAccountDAO.retriveUser(loginId);
+		if (user!=null)
+		{
+			if (user.getPassword().equals(password))
+			{
+				return user;
+			}
+			else
+			{
+				return null;
+			}
+			
+		}
+		else
+		{
+			return null;
+		}
+		
 		
 	}
 	

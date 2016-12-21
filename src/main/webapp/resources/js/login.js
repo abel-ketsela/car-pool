@@ -5,7 +5,7 @@ $("#loader").hide();
                 }).ajaxStop(function() {
                  $("#loader").hide();
                 });
-
+/*
 $('#signIn').click(function() {
 //      
         alert("test");
@@ -30,7 +30,7 @@ $('#signIn').click(function() {
               
             });
 
-  });
+  });*/
 
 
 

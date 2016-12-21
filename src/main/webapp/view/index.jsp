@@ -157,9 +157,9 @@
                                     Message 
                                 </label>
                                 <div class="col-sm-10">
-                                    <textarea id="postBody" rows="4" cols="50" placeholder="Enter your post....">
+                                    <textarea id="postBody" rows="4" cols="50" placeholder="Enter your post...."></textarea>
                                         
-                                    </textarea>
+                                    
                                 </div>
                             </div>
 
@@ -182,7 +182,7 @@
                         <button type="button" class="btn btn-default" data-dismiss="modal">
                             Close
                         </button> 
-                        <button type="newPost" class="btn btn-primary">
+                        <button id="newPostButton" type="newPost" class="btn btn-primary">
                             Post it!!
                         </button>
                     </div>

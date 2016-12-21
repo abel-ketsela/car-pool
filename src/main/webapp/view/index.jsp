@@ -11,8 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
         <title>CAR Pooling </title>
         <script
-        src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-
+        src="https://code.jquery.com/jquery-3.1.1.min.js"></script>		
         <link href="../resources/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>  
         <style type="text/css" >
             #gotop {

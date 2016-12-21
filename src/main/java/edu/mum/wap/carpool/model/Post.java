@@ -1,18 +1,26 @@
 package edu.mum.wap.carpool.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Post {
+public class Post implements Serializable    {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int postId;
 	private User user;
-	private Post post;
+	private String post;
 	private String postType;
 	private Date dateCreated;
 	private Date dateUpdated;
 	
 	
 	////////////////// SETTER / GETTER //////////////////////
+	
+	
+	
 
 	public int getPostId() {
 		return postId;
@@ -26,10 +34,10 @@ public class Post {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	public Post getPost() {
+	public String getPost() {
 		return post;
 	}
-	public void setPost(Post post) {
+	public void setPost(String post) {
 		this.post = post;
 	}
 	public String getPostType() {

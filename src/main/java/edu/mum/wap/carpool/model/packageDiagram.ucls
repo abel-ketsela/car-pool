@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.13" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <package id="1" language="java" name="edu.mum.wap.carpool.controllers" project="car-pool" 
+    file="/car-pool/src/main/java/edu/mum/wap/carpool/controllers" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="183" y="110"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="2" language="java" name="edu.mum.wap.carpool.dao.impl" project="car-pool" 
+    file="/car-pool/src/main/java/edu/mum/wap/carpool/dao/impl" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="407" y="339"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="3" language="java" name="edu.mum.wap.carpool.dao" project="car-pool" 
+    file="/car-pool/src/main/java/edu/mum/wap/carpool/dao" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="335" y="279"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="4" language="java" name="edu.mum.wap.carpool.model" project="car-pool" 
+    file="/car-pool/src/main/java/edu/mum/wap/carpool/model" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="128" y="50"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="5" language="java" name="edu.mum.wap.carpool.service.impl" project="car-pool" 
+    file="/car-pool/src/main/java/edu/mum/wap/carpool/service/impl" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="297" y="223"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="6" language="java" name="edu.mum.wap.carpool.util" project="car-pool" 
+    file="/car-pool/src/main/java/edu/mum/wap/carpool/util" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="472" y="401"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="7" language="java" name="edu.mum.wap.carpool.service" project="car-pool" 
+    file="/car-pool/src/main/java/edu/mum/wap/carpool/service" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="229" y="166"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

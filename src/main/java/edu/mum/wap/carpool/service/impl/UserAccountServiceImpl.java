@@ -18,14 +18,18 @@ public class UserAccountServiceImpl implements UserAccountService {
 	{
 		userAccountDAO=new UserAccountDAOImpl();
 	}
-	
-	public void registerUser(User user) throws Exception
-	{
+
+	@Override
+	public void registerUser(User user) throws Exception {
 		userAccountDAO.createUser(user);
-	}
-	public User validateUser(String userName,String password)
-	{
-		return null;
+		
 	}
 
+	@Override
+	public User validateUser(String loginId, String password) throws Exception {
+		
+		return userAccountDAO.retriveUser(loginId);
+		
+	}
+	
 }

@@ -1,24 +1,43 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-
-
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-    <%@include file="includes.jsp" %>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-    <body class="skin-blue">
-        <%@include file="header.jsp" %>
-        <!-- Site wrapper -->
-        <div class="wrapper">
-            <%@include file="sideBar.jsp" %>
-            <!-- Content Wrapper. Contains page content -->
-            <div class="content-wrapper" style="min-height: 858px;">
-                <!-- Content Header (Page header) -->
-                <section class="content-header">
-                    <h1> New user registration </h1>
-                </section>
-                <!-- Main content -->
-                <section class="content">                   
-                    <form action="#" commandName="client" method="post" role="form" data-toggle="validator">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<title>Sign Up</title>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">RideWithMe.net</a>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="active"><a href="#">About Us</a></li>
+      <li><a href="#">Our Service</a></li>
+      <li><a href="#">Contact Us</a></li>
+    </ul>
+   
+  </div>
+</nav>
+
+	<div class="container">
+		<div class="panel panel-default">
+		 <div class="panel-body">
+		 <form action="#" commandName="client" method="post" role="form" data-toggle="validator">
                         <!-- Default box -->
                         <div class="row">
                             <div class="col-xs-12">
@@ -93,7 +112,7 @@
                             </div><!-- /.box -->
                              <div class="box-footer" style="text-align: center;">
                                   <div id="loader">
-                                             <img src="../resources/images/loading.gif" alt=""/>
+                                             <img src="../images/loading.gif" alt=""/>
                                         </div> 
                             <input type="button" id="signup" name="submit" value="Signup" class="btn btn-primary">
                             <input type="button" name="btnClose" id="btnClose" value="Close" class="btn btn-primary">
@@ -102,27 +121,9 @@
                         <!-- /.box -->                       
                        
                     </form>
-                </section><!-- /.content -->
-            </div><!-- /.content-wrapper -->
-            <%@include file="footer.jsp" %>
-        </div><!-- ./wrapper -->
-       
-        <%@include file="scripts.jsp" %> 
-       
-        <script type="text/javascript">
-            $(document).ready(function(){
-                $("#loader").hide();
-                $(document).ajaxStart(function() {
-                    $("#loader").show();
-                }).ajaxStop(function() {
-                    $("#loader").hide();
-                });
-                
-                
-            })
-            
-            
-        </script>
-      
-    </body>
+			</div>
+        </div>
+</div>
+<script src="../js/signup.js" type="text/javascript"></script>
+</body>
 </html>

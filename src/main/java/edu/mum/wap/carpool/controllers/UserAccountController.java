@@ -40,14 +40,13 @@ public class UserAccountController extends HttpServlet {
 		String action=request.getParameter("ACTION");
 		
 		System.out.println(action);
+		try
+		{
 		if (action.equals("USER.CREATE"))
 		{
 			User user =new User();
+
 			
-			
-			
-			try
-			{
 				user.setDateOfBirth(LocalDate.parse(request.getParameter("dob"),dtf));
 				user.setCity(request.getParameter("city"));
 				user.setEmail(request.getParameter("email"));
@@ -63,13 +62,33 @@ public class UserAccountController extends HttpServlet {
 				this.userAccountService.registerUser(user);
 				System.out.println("User Created ---");
 
-			}
-			catch (Exception ex)
-			{
-				System.out.println(ex);
-			}
 			
 		}
+		else if (action.equals("USER.LOGIN"))
+		{
+			User user=this.userAccountService.validateUser(request.getParameter("loginId"),request.getParameter("password"));
+			if (user!=null)
+			{
+				request.getSession().setMaxInactiveInterval(30*60);
+				request.getSession().setAttribute("currentUser", user);
+				request.getRequestDispatcher("/car-pool/view/index.jsp")
+											.forward(request, response);
+			}
+			else
+			{
+				request.setAttribute("errorMsg", "Invalid Login or Password");
+				request.getRequestDispatcher("/car-pool/view/login.jsp")
+											.forward(request, response);
+			}
+		}
+		
+		
+		}
+		catch (Exception ex)
+		{
+			System.out.println(ex);
+		}
+		
 				
 	
 	}

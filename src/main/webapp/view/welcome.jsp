@@ -22,7 +22,7 @@
                             CAR POOLING
                         </h2>
                         <p>
-                            Welcome to bla bla bla        
+                            Welcome to RideWithMe.net       
 
                         </p>
                         <p>

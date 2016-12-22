@@ -53,7 +53,7 @@
 
                             <div class="form-group">
                                 <label for="txtFullName">Full Name</label>
-                                <input type="text" class="form-control" name="txtFullName" id="txtFullName" placeholder="Enter Full Name" required>
+                                <input type="text" class="form-control" name="txtFullName" id="txtFullName"  placeholder="Enter Full Name" required>
                             </div>
                             <div class="form-group">
                                 <label for="optGender">Gender</label>
@@ -85,7 +85,7 @@
                                     <div class="input-group-addon">
                                         <i class="fa fa-calendar"></i>
                                     </div>
-                                    <input type="text" class="form-control" data-provide="datepicker" name="txtDOB" id="txtDOB" placeholder="click to show datepicker" required>
+                                    <input type="text" class="form-control" data-provide="datepicker"  name="txtDOB" id="txtDOB" placeholder="click to show datepicker" required>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -94,25 +94,16 @@
                             </div> 
                             <div class="form-group">
                                 <label for="txtPassword">Password</label>
-                                <input type="password" class="form-control" name="txtPassword" id="txtPassword" placeholder="Enter Passord" required>
+                                <input type="password" class="form-control" name="txtPassword" id="txtPassword" pattern="^(?=.{6,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).*$" placeholder="Enter Passord" required>
                             </div>  
-                            <div class="form-group">
-                                <label for="txtConfirmPassword">Confirm Password</label>
-                                <input type="text" class="form-control" name="txtConfirmPassword" id="txtConfirmPassword" placeholder="Retype your password" required>
-                            </div>
-
-
+                           
+                            	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                             <input type="submit" class="btn btn-primary" value="Save changes"  id="signup"/>
+ 						
+                            
                         </form>
                     </div>
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-default" data-dismiss="modal">
-                            Close
-                        </button> 
-                        <button type="button"  id="signup"  class="btn btn-primary">
-                            Save changes
-                        </button>
-                    </div>
+                 
                 </div>
 
             </div>
@@ -205,5 +196,11 @@
         <script src="/car-pool/resources/js/signup.js" type="text/javascript"></script>
         
         <link href="/car-pool/resources/plugins/datepicker/datepicker3.css" rel="stylesheet" type="text/css"/>
+        
+        <script type="text/javascript">
+      
+
+        
+        </script>
     </body>
 </html>

@@ -29,7 +29,7 @@
                             <a id="modal-716219" href="#modal-container-716219" role="button" class="btn btn-primary btn" data-toggle="modal">Sign Up</a>
                             <a id="modal-716219" href="#login" role="button" class="btn btn-primary" data-toggle="modal">login</a>    
                         </p>
-                        <p><% if(request.getAttribute("errorMsg")!=null){out.println(request.getAttribute("errorMsg"));} %></p>
+                       
                     </div>
                 </div>
             </div>
@@ -134,7 +134,7 @@
                     </div>
                      <form action="/car-pool/user/validate" method="POST" class="form-horizontal" role="form">
                     <div class="modal-body">
-                       
+                        <p><% if(request.getAttribute("errorMsg")!=null){out.println(request.getAttribute("errorMsg"));} %></p>
                             <div class="form-group">                               
                                
                                 <label for="loginId" class="col-sm-2 control-label">

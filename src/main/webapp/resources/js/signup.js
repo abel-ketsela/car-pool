@@ -24,7 +24,7 @@ $(document).ready(
 					return now.getFullYear() - born.getFullYear() - 1;
 
 			}
-			alert(age);
+			//alert(age);
 			$('#signup').click(function() {
 				var formData = {
 					"fullName" : $('#txtFullName').val(),

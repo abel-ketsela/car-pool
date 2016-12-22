@@ -26,10 +26,13 @@ $(document).ready(function () {
 	function loadNewNotification(data)
 	{
 		if (data.length>0)
-			{
-				$("<div>").addClass("alert")
-							.text("New Post ( "+data.length +" )")
-							.on("click",loadRidePosts(data))
+			{	$("#postNotify").remove();
+				$("<div>").addClass("alert").addClass("alert-info").attr("id","postNotify")
+							.append($("<a>").attr("href","#").on("click",loadAjax).text("New Post")) 
+							.css("position","fixed")
+							.css("width","100px")
+							.css("top","0px")
+							.css("left","50%")
 							.appendTo($("body"))
 									
 				//loadRidePosts(data)
@@ -95,7 +98,7 @@ function loadRidePosts(data) {
 //        alert("No update")
 //    }
 
-	
+	$("#postNotify").remove();
     for (let i=0 ; i < data.length  ; i++) {
     	
     	if (i==data.length-1)
@@ -137,8 +140,10 @@ function loadRidePosts(data) {
     }
 
 var currPost;
+var currBtn;
     function loadComments() {    
     	currPost=$(this).attr("data-id");
+    	currBtn=$(this);
         $.ajax("http://localhost:8080/car-pool/post/getComments"
                 , {
                     "type": "GET",
@@ -148,11 +153,31 @@ var currPost;
 
                     },
                 }).done(getComments)
+                
+                
+                 //alert("test")
+        commentBlankDiv = $('<div>').addClass("media well posts").css("margin-left", "50px").append(
+                $('<div>').addClass("col-sm-10")
+                 .append($('<textarea>').attr("type", "textarea")
+                                     .attr("data-id", $(this).attr("data-id"))
+                                     .attr("rows","3")
+                                     .attr("cols","100")
+                                     .attr("placeholder","Write a comment")
+                                     .addClass("form-control")
+                          )
+                .append($('<hr />'))
+                .append($('<button>').click(addComment)
+                .addClass("btn btn-primary")
+                .text("Leave Comment" ).attr("data-id", currPost)));
 
+		//$("[data-id='" + postId + "']").parent().append(commentBlankDiv);
+		$(this).parent().append(commentBlankDiv);
+                
+                
     }
     
     function addComment() {    	
-    	$("#userComments").remove();
+    	
     	//$(this).parent().remove()
         $.ajax("http://localhost:8080/car-pool/post/addComment"
                 , {
@@ -171,7 +196,9 @@ var currPost;
     
   
     
-    function getComments(data) {      
+    function getComments(data) {  
+    	
+    	$("#userComments").remove();
     	
         for (var i = 0; i < data.length; i++) {        	
 
@@ -204,25 +231,17 @@ var currPost;
                     			.append(commentsMediaHeading)
                     			.append(commentsMediaEmail)
                     			.append(commentsMediaContent)
-                    			.insertAfter("[data-id='" + postId + "']")
+                    			.appendTo(currBtn.parent());
+                    			//.insertAfter("[data-id='" + postId + "']")
             
            
         }
         
-        commentBlankDiv = $('<div>').addClass("media well posts").css("margin-left", "50px").append(
-                               $('<div>').addClass("col-sm-10")
-                                .append($('<textarea>').attr("type", "textarea")
-                                                    .attr("data-id", $(this).attr("data-id"))
-                                                    .attr("rows","3")
-                                                    .attr("cols","100")
-                                                    .attr("placeholder","Write a comment")
-                                                    .addClass("form-control")
-                                         )
-                               .append($('<hr />'))
-                               .append($('<button>').click(addComment)
-                               .addClass("btn btn-primary")
-                               .text("Leave Comment" ).attr("data-id", currPost)));
-             $("[data-id='" + postId + "']").parent().append(commentBlankDiv);
+     
+        
+        
+        
+       
           
     }
 
@@ -256,6 +275,20 @@ $('#newPostButton').on('click', function () {
 		$('#newPost').modal('toggle'); 
 		   
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* -------------PROVIDE A RIDE POST ------------- */
 function loadRideProvidePosts(){
@@ -337,7 +370,7 @@ var currPost;
                         "ACTION": "POST.ADD.COMMENTS"
 
                     },
-                }).done(getComments)
+                }).always(getComments)
                 
                  $(this).siblings("textarea").val("")
     }
@@ -345,7 +378,7 @@ var currPost;
 
     function getComments(data) {
 
-      
+      alert("test")
     	
         for (var i = 0; i < data.length; i++) {
         	

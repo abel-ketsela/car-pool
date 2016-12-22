@@ -10,7 +10,7 @@ public interface PostDAO {
 	public void createPost(Post post) throws Exception;
 	public Post retrivePostById(String postId) throws Exception;
 	public List<Post> retrivePostByUser(String userId) throws Exception;
-	public List<Post> retrivePostByType(String type) throws Exception;
+	public List<Post> retrivePostByType(String type,int below) throws Exception;
 	public List<Comment> retrivePostCommentsByPost(int postId) throws Exception;
 	public void createPostComment(Comment comment) throws Exception;
 	public void updatePost(Post post) throws Exception;

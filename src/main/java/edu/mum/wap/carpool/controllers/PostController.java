@@ -3,6 +3,7 @@ package edu.mum.wap.carpool.controllers;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
+import java.util.concurrent.TimeUnit;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
@@ -65,10 +66,21 @@ public class PostController extends HttpServlet {
 
 				
 			}
-			else if (action.equals("POST.GET.REQUEST"))
+			else if (action.equals("POST.GET.REQUEST")||action.equals("POST.GET.REQUEST.NEW"))
 			{
+				TimeUnit.MILLISECONDS.sleep(200);
+				System.out.println("stopId --"+request.getParameter("BELOW"));
 				response.setContentType("application/json");
-				JSONArray jsonPostList=postService.getUserPostByType("REQUEST");
+				JSONArray jsonPostList;
+				if (action.equals("POST.GET.REQUEST"))
+				{
+					jsonPostList=postService.getUserPostByType("REQUEST",Integer.parseInt(request.getParameter("BELOW")));
+				}
+				else
+				{
+					jsonPostList=postService.getUserPostByType("REQUEST.NEW",Integer.parseInt(request.getParameter("BELOW")));
+
+				}
 				ServletOutputStream outputStream = response.getOutputStream();
 				outputStream.print(jsonPostList.toString());  
 				
@@ -77,7 +89,7 @@ public class PostController extends HttpServlet {
 			else if (action.equals("POST.GET.PROVIDE"))
 			{
 				response.setContentType("text/json");
-				JSONArray jsonPostList=postService.getUserPostByType("PROVIDE");
+				JSONArray jsonPostList=postService.getUserPostByType("PROVIDE",99999);
 				ServletOutputStream outputStream = response.getOutputStream();
 				outputStream.print(jsonPostList.toString());  
 				

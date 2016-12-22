@@ -26,6 +26,27 @@
 	right: 20px;
 	/*top:0px;*/
 }
+
+
+.newPostNotify {
+	position: fixed;
+	top: opx;
+	left: 50%;
+    background: radial-gradient( 5px -9px, circle, white 8%, red 26px );
+    background-color: blue;
+    width: 200px;
+    border: 2px solid white;
+    border-radius: 12px; /* one half of ( (border * 2) + height + padding ) */
+    box-shadow: 1px 1px 1px black;
+    color: white;
+    font: bold 15px/13px Helvetica, Verdana, Tahoma;
+    height: 16px; 
+    min-width: 14px;
+    padding: 4px 3px 0 3px;
+    text-align: center;
+    z-index:10;
+}
+
 </style>
 </head>
 <body>
@@ -162,6 +183,8 @@
 					<div class="col-md-8">
 
 						<div id="posts"></div>
+						<input type="hidden" id="stopId" value="9999"/>
+						<input type="hidden" id="newId" value="0"/>
 						<div class="tabbable" id="tab">
 							<ul class="nav nav-tabs">
 								<li class="active"><a href="#requestRideTab"
@@ -265,6 +288,8 @@
 	<script src="/car-pool/resources/bootstrap/js/bootstrap.js"
 		type="text/javascript"></script>
 	<script src="/car-pool/resources/js/rideRequest.js"
+		type="text/javascript"></script>
+	<script src="/car-pool/resources/js/scroll.js"
 		type="text/javascript"></script>
 	<script src="/car-pool/resources/js/posts.js" type="text/javascript"></script>
 	<!--   <script src="/car-pool/resources/js/provideRequest.js"

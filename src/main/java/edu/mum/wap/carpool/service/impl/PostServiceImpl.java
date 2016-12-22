@@ -26,9 +26,9 @@ public class PostServiceImpl implements PostService {
 	}
 
 	@Override
-	public JSONArray getUserPostByType(String type) throws Exception {
+	public JSONArray getUserPostByType(String type,int below) throws Exception {
 		
-		List<Post> postList =postDAO.retrivePostByType(type);
+		List<Post> postList =postDAO.retrivePostByType(type,below);
 		JSONArray jsonPostList = new JSONArray();
 		for (Post p : postList)
 		{

@@ -57,18 +57,29 @@ public class PostDAOImpl implements PostDAO {
 	}
 
 	@Override
-	public List<Post> retrivePostByType(String type) throws Exception {
+	public List<Post> retrivePostByType(String type, int below) throws Exception {
 		
 		Connection con=GlobalUtil.getDBConnection();
 		
 		List<Post> postList=new ArrayList();
+		String query="";
 		
-		String query="SELECT * FROM `car-pool`.`posts` WHERE `posttype` =? ORDER BY `dateupdated` DESC;";
+		if (type.equals("REQUEST.NEW"))
+		{
+			type="REQUEST";
+			query="SELECT * FROM `car-pool`.`posts` WHERE `posttype` =? AND `postid`>? ORDER BY postId DESC LIMIT 5;";
+		}
+		else
+		{
+			query="SELECT * FROM `car-pool`.`posts` WHERE `posttype` =? AND `postid`<? ORDER BY postId DESC LIMIT 5;";
+
+		}
 					
 		
 		PreparedStatement stmt = con.prepareStatement(query);
 		
 		stmt.setString(1, type);
+		stmt.setInt(2, below);
 		
 		ResultSet rsPost=stmt.executeQuery();
 		while(rsPost.next())

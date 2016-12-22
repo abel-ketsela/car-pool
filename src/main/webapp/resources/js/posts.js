@@ -2,10 +2,65 @@ var commentDiv;
 let postSize;
 var commentBlankDiv;
 
-$(document).ready(function () {    
+$(document).ready(function () {   
+	
+	$.ajaxSetup ({
+	    // Disable caching of AJAX responses
+	    cache: false
+	});
+	
 	var loading = true;
 	loadAjax();  
-  //  setInterval(loadAjax, (1 * 1000));
+	
+	setInterval(checkForNewPost, (5 * 1000));
+	
+	function checkForNewPost()
+	{
+		 $.ajax("http://localhost:8080/car-pool/post/get?ACTION=POST.GET.REQUEST.NEW"
+		            , {
+		                "type": "GET",
+		                "data":{"BELOW": $("#newId").val()}
+		            }).done(loadNewNotification)    
+	}
+	
+	function loadNewNotification(data)
+	{
+		if (data.length>0)
+			{
+				$("<div>").addClass("alert")
+							.text("New Post ( "+data.length +" )")
+							.on("click",loadRidePosts(data))
+							.appendTo($("body"))
+									
+				//loadRidePosts(data)
+			}
+		
+	}
+	
+	var win = $(window);
+
+	// Each time the user scrolls
+	win.scroll(function() {
+		
+		// End of the document reached?
+		if ($(document).height() - win.height() == win.scrollTop()) {
+			//alert("reached");
+			var loading = $("<img>").attr("src","/car-pool/resources/images/loading.gif")
+									.css("margin-left","45%");
+			$("#requestRideTab").append(loading)
+			
+
+			 $.ajax("http://localhost:8080/car-pool/post/get?ACTION=POST.GET.REQUEST"
+			            , {
+			                "type": "GET",
+			                "data":{"BELOW": $("#stopId").val()}
+			            }).done(function(data) { loadRidePosts(data); loading.remove()})     
+			           
+		}
+	});
+	
+	
+	
   
 });
 
@@ -18,13 +73,17 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
 	});
 
 function loadAjax(){ 	
-    
+  
+	var loading = $("<img>").attr("src","/car-pool/resources/images/loading.gif")
+							.css("margin-left","45%");
+	$("#requestRideTab").append(loading)
+
     $.ajax("http://localhost:8080/car-pool/post/get?ACTION=POST.GET.REQUEST"
             , {
                 "type": "GET",
-            }).done(loadRidePosts)     
-            loading = false;
-    		$('.loading').remove();
+                "data":{"BELOW": "99999"}
+            }).done(function (data){$("#requestRideTab").children("div").remove(); loadRidePosts(data); loading.remove();})     
+        
 }
 
 function loadRidePosts(data) {
@@ -35,9 +94,19 @@ function loadRidePosts(data) {
 //    }else{
 //        alert("No update")
 //    }
-$("#requestRideTab").children("div").remove();
+
 	
     for (let i=0 ; i < data.length  ; i++) {
+    	
+    	if (i==data.length-1)
+    		{
+    			$("#stopId").val(data[i].postId);
+    		}
+    	if (data[i].postId > $("#newId").val())
+		{
+			$("#newId").val(data[i].postId);
+		}
+    	
         var mediaDiv = $('<div>').addClass("media well")
 
         var img = $('<a>').addClass("pull-left").append(
@@ -59,7 +128,7 @@ $("#requestRideTab").children("div").remove();
 
         mediaDiv.append(img).append(mediaDivBody)
                 .append(mediaHeading).append(mediaEmail)
-                .append(mediaContent).append(mediaComments)
+                .append(mediaContent).append(mediaComments).hide().fadeIn(i*700)
                 .appendTo("#requestRideTab")
 
         
@@ -183,7 +252,7 @@ $('#newPostButton').on('click', function () {
 		        url: '/car-pool/post/newPost',
 		        data: postData,
 		    })
-        .done(loadAjax);
+        .done(function(data){$("#newId").val($("#newId").val()+1);loadAjax(data);});
 		$('#newPost').modal('toggle'); 
 		   
 })
@@ -349,7 +418,7 @@ var currPost;
 
 
 /*-- SCROLL  */
-
+/*
 $(function(){
 	loadAjax(); 	
 	//Scoll the event of the main div
@@ -371,4 +440,4 @@ $(function(){
 						}
 	})
 		
-})
+})*/

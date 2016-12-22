@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="windows-1252"%>
+<%@ taglib uri="/WEB-INF/custom.tld" prefix="l" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -65,7 +67,12 @@
 										class="icon-bar"></span><span class="icon-bar"></span><span
 										class="icon-bar"></span>
 								</button>
-								<a class="navbar-brand" href="#">CAR POOLING</a>
+								<!--<a class="navbar-brand" href="#">CAR POOLING</a> -->
+								 <a class="navbar-brand" href="#">
+								 <img src="/car-pool/resources/images/ride-pool.png" width="44px" style="margin-top:1px" alt="CAR POOLING">
+								  </a> 
+       							<l:logo text="CAR POOLING" foreColor="#82030c"></l:logo>
+								
 							</div>
 
 							<div class="collapse navbar-collapse navbar-right"
@@ -118,7 +125,8 @@
 						<div>
 
 							<div class="jumbotron">
-								<h2>Weather information on the current area</h2>
+								<h2>Welcome ${currentUser.fullName} </h2>
+								<h3> here is your city weather information on the current area</h3>
 						<div class="panel-body jumbotron">
 									<div class="row col-lg-12 daily">
 										<div class="col-lg-12">

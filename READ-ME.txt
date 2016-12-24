@@ -1,0 +1,14 @@
+Database user needed
+----------------------------------------
+databse name: car-pool
+user name: car-pool
+password: car-pool
+
+
+Existing application user for testing 
+---------------------------------------- 
+login id: admin@admin.com
+password: pass
+
+login id: user@user.com
+password: pass
